@@ -1,19 +1,25 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import "./App.css"
 import { AuthContextProvider } from "./context/AuthContext"
-import { Root } from "./routes/Root"
-import { ErrorPage } from "./routes/ErrorPage"
 import { LoginPage } from "./routes/login/LoginPage"
+import { TaskPage } from "./routes/tasks/TaskPage"
+import { taskPageLoader } from "./routes/tasks/taskPageLoader"
+import { HomePage } from "./routes/homePage/HomePage"
+import { ErrorPage } from "./routes/homePage/errorPage/ErrorPage"
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <Root />,
+		element: <HomePage />,
 		errorElement: <ErrorPage />,
 		children: [
 			{
 				index: true,
 				Component: LoginPage,
+			},
+			{
+				path: "tasks",
+				loader: taskPageLoader,
+				Component: TaskPage,
 			},
 		],
 	},
