@@ -14,18 +14,10 @@ export const AuthContextProvider = ({
 }: {
 	children: React.ReactNode
 }) => {
-	const [currentUser, setCurrentUser] = useState<User | null>(() => {
-		const user = localStorage.getItem("currentUser")
-		return user ? JSON.parse(user) : null
-	})
+	const [currentUser, setCurrentUser] = useState<User | null>(null)
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, user => {
-			if (user) {
-				localStorage.setItem("currentUser", JSON.stringify(user))
-			} else {
-				localStorage.removeItem("currentUser")
-			}
 			setCurrentUser(user)
 		})
 
@@ -35,7 +27,6 @@ export const AuthContextProvider = ({
 	}, [])
 
 	const logout = async () => {
-		localStorage.clear()
 		await signOut(auth)
 	}
 
