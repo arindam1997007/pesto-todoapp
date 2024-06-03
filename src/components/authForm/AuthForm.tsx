@@ -6,6 +6,7 @@ import {
 import { auth } from "../../firebase"
 import { AuthContext } from "../../context/AuthContext"
 import { toast } from "react-toastify"
+import { Button } from "../ui/button/Button"
 
 import styles from "./AuthForm.module.css"
 
@@ -73,30 +74,24 @@ export const AuthForm = () => {
 				aria-label='password'
 				required
 			/>
-			<button disabled={pending}>
+			<Button disabled={pending}>
 				{pending ? "Submitting..." : showLogin ? "Log In" : "Sign Up"}
-			</button>
+			</Button>
 
 			<p className={styles["switch-method"]}>
 				{showLogin ? (
 					<>
 						Don't have an account?{" "}
-						<button
-							className={styles["switch-button"]}
-							onClick={() => setShowLogin(false)}
-						>
+						<Button variant='secondary' onClick={() => setShowLogin(false)}>
 							Register Now
-						</button>
+						</Button>
 					</>
 				) : (
 					<>
 						Already an user?
-						<button
-							className={styles["switch-button"]}
-							onClick={() => setShowLogin(true)}
-						>
+						<Button variant='secondary' onClick={() => setShowLogin(true)}>
 							Login here
-						</button>
+						</Button>
 					</>
 				)}
 			</p>
