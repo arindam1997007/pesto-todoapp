@@ -3,11 +3,13 @@ import "./App.css"
 // import { AuthForm } from "./components/AuthForm"
 import { AuthContextProvider } from "./context/AuthContext"
 import { Root } from "./routes/Root"
+import { ErrorPage } from "./routes/ErrorPage"
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Root />,
+		errorElement: <ErrorPage />,
 	},
 ])
 

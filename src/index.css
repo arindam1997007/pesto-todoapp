@@ -12,6 +12,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
 a {
 	font-weight: 500;
 	color: #646cff;
@@ -22,10 +32,7 @@ a:hover {
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	display: flex;
-	place-items: center;
+	line-height: 1.5;
 	min-width: 320px;
 	min-height: 100vh;
 }
@@ -47,6 +54,32 @@ button:hover {
 button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
 }
 
 @media (prefers-color-scheme: light) {
