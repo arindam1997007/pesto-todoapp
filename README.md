@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# ToDo Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This site is built using React + TypeScript + Vite + Firebase
 
-Currently, two official plugins are available:
+## Setting up the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Firebase Config
 
-## Expanding the ESLint configuration
+1. **Create a Firebase Project:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   - Go to [Firebase Console](https://console.firebase.google.com/u/0/) and create a new project.
 
-- Configure the top-level `parserOptions` property like this:
+2. **Set Up Authentication:**
+   - Navigate to the "Authentication" tab under "Build."
+   - Set up authentication with the Email/Password provider.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Clone the Repository
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. **Clone the Repo:**
+
+   - Clone the repository to your local system.
+
+2. **Update Firebase Configuration:**
+
+   - Open the `./firebase.ts` file and update the configurations with the Firebase config values provided for your project.
+
+3. **Set Up Environment Variables:**
+   - Duplicate the `.example.env` file and rename it to `.env`.
+   - Paste the following Firebase config values into the `.env` file:
+     ```
+     VITE_FIREBASE_API_KEY=<your-firebase-api-key>
+     VITE_FIREBASE_APP_ID=<your-firebase-app-id>
+     VITE_FIREBASE_MEASUREMENT_ID=<your-firebase-measurement-id>
+     ```
+
+### Setting up the Client
+
+1. **Install Dependencies:**
+
+   - Run `npm install` to install all the dependencies.
+
+2. **Start the Application:**
+   - Run `npm run dev` to start the application on your local system.
