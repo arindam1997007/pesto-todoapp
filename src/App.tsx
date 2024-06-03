@@ -1,15 +1,21 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import "./App.css"
-// import { AuthForm } from "./components/AuthForm"
 import { AuthContextProvider } from "./context/AuthContext"
 import { Root } from "./routes/Root"
 import { ErrorPage } from "./routes/ErrorPage"
+import { LoginPage } from "./routes/login/LoginPage"
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Root />,
 		errorElement: <ErrorPage />,
+		children: [
+			{
+				index: true,
+				Component: LoginPage,
+			},
+		],
 	},
 ])
 
@@ -24,7 +30,6 @@ function App() {
 					</p>
 				}
 			/>
-			{/* <AuthForm /> */}
 		</AuthContextProvider>
 	)
 }

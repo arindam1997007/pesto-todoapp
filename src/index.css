@@ -34,11 +34,10 @@ a:hover {
 body {
 	line-height: 1.5;
 	min-width: 320px;
-	min-height: 100vh;
+	height: 100vh;
 }
 
 button {
-	border-radius: 8px;
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;
 	font-size: 1em;
@@ -49,11 +48,11 @@ button {
 	transition: border-color 0.25s;
 }
 button:hover {
-	border-color: #646cff;
+	border-color: rgba(211, 211, 211, 0.7);
 }
 button:focus,
 button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
+	outline: 2px auto -webkit-focus-ring-color;
 }
 
 img,
@@ -82,6 +81,10 @@ h6 {
 	overflow-wrap: break-word;
 }
 
+#root {
+	height: 100%;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
@@ -92,5 +95,12 @@ h6 {
 	}
 	button {
 		background-color: #f9f9f9;
+	}
+}
+
+/* Targetting mobile and tablet screens */
+@media (max-width: 767px) {
+	html {
+		font-size: 14px;
 	}
 }
