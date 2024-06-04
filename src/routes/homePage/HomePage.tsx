@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { IoPersonCircleOutline } from "react-icons/io5"
@@ -16,17 +16,15 @@ export const HomePage = () => {
 			<header className={styles.header}>
 				<h3>To-Do Application</h3>
 				<nav className={styles.navbar}>
-					<p>Hi!</p>
 					{profileName && (
 						<>
-							<p>{profileName}</p>
-							<Button variant='secondary'>
+							<p>Hi! {profileName}</p>
+							<Button variant='secondary' onClick={useAuth.logout}>
 								<IoPersonCircleOutline />
 							</Button>
 						</>
 					)}
 				</nav>
-				<Link to='/tasks'>Tasks</Link>
 			</header>
 			<Outlet />
 		</main>

@@ -1,6 +1,7 @@
 import { onAuthStateChanged, signOut, User } from "firebase/auth"
 import React, { createContext, useEffect, useState } from "react"
 import { auth } from "../firebase"
+import { useNavigate } from "react-router-dom"
 
 interface AuthContextType {
 	currentUser: User | null
@@ -16,6 +17,8 @@ export const AuthContextProvider = ({
 }) => {
 	const [currentUser, setCurrentUser] = useState<User | null>(null)
 
+	const navigate = useNavigate()
+
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, user => {
 			setCurrentUser(user)
@@ -28,6 +31,7 @@ export const AuthContextProvider = ({
 
 	const logout = async () => {
 		await signOut(auth)
+		navigate("/")
 	}
 
 	const value = {

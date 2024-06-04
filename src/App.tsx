@@ -1,43 +1,44 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
 import { AuthContextProvider } from "./context/AuthContext"
 import { LoginPage } from "./routes/login/LoginPage"
 import { TaskPage } from "./routes/tasks/TaskPage"
 import { taskPageLoader } from "./routes/tasks/taskPageLoader"
 import { HomePage } from "./routes/homePage/HomePage"
 import { ErrorPage } from "./routes/homePage/errorPage/ErrorPage"
+import { loginPageLoader } from "./routes/login/loginPageLoader"
+import { Loader } from "./components/ui/loader/Loader"
 
 const router = createBrowserRouter([
 	{
-		path: "/",
-		element: <HomePage />,
-		errorElement: <ErrorPage />,
+		element: (
+			<AuthContextProvider>
+				<Outlet />
+			</AuthContextProvider>
+		),
 		children: [
 			{
-				index: true,
-				Component: LoginPage,
-			},
-			{
-				path: "tasks",
-				loader: taskPageLoader,
-				Component: TaskPage,
+				path: "/",
+				element: <HomePage />,
+				errorElement: <ErrorPage />,
+				children: [
+					{
+						index: true,
+						loader: loginPageLoader,
+						Component: LoginPage,
+					},
+					{
+						path: "tasks",
+						loader: taskPageLoader,
+						Component: TaskPage,
+					},
+				],
 			},
 		],
 	},
 ])
 
 function App() {
-	return (
-		<AuthContextProvider>
-			<RouterProvider
-				router={router}
-				fallbackElement={
-					<p>
-						<strong>Loading...</strong>
-					</p>
-				}
-			/>
-		</AuthContextProvider>
-	)
+	return <RouterProvider router={router} fallbackElement={<Loader />} />
 }
 
 export default App

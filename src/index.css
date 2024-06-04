@@ -1,10 +1,16 @@
 :root {
+	--text-color: rgb(249, 249, 249);
+	--background-color: rgb(36, 36, 36);
+	--primary: hsl(187, 22%, 31%);
+	--secondary: #2c2c2b;
+	--accent: #7886a9;
+
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-weight: 400;
 
 	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
+	color: var(--text-color);
+	background-color: var(--background-color);
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
@@ -24,11 +30,8 @@
 
 a {
 	font-weight: 500;
-	color: #646cff;
+	color: var(--primary);
 	text-decoration: inherit;
-}
-a:hover {
-	color: #535bf2;
 }
 
 body {
@@ -69,14 +72,11 @@ h6 {
 
 @media (prefers-color-scheme: light) {
 	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
-	a:hover {
-		color: #747bff;
-	}
-	button {
-		background-color: #f9f9f9;
+		--text-color: #242424;
+		--background-color: rgb(249, 249, 249);
+		--primary: #9fbdc1;
+		--secondary: #d3d4d3;
+		--accent: #566286;
 	}
 }
 

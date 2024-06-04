@@ -3,6 +3,7 @@ import styles from "./ErrorPage.module.css"
 
 export const ErrorPage = () => {
 	const error = useRouteError()
+
 	let errorMessage: string
 	let errorStatus
 
@@ -14,9 +15,10 @@ export const ErrorPage = () => {
 	} else if (typeof error === "string") {
 		errorMessage = error
 	} else {
-		console.error(error)
 		errorMessage = "Unknown error"
 	}
+
+	console.error(error)
 
 	return (
 		<div className={styles["error-page"]}>

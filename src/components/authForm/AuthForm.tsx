@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from "firebase/auth"
 import { auth } from "../../firebase"
-import { AuthContext } from "../../context/AuthContext"
 import { toast } from "react-toastify"
 import { Button } from "../ui/button/Button"
+import { useNavigate } from "react-router-dom"
 
 import styles from "./AuthForm.module.css"
 
@@ -16,17 +16,19 @@ export const AuthForm = () => {
 	const [pending, setPending] = useState(false)
 	const [showLogin, setShowLogin] = useState(true)
 
-	const useAuth = useContext(AuthContext)
-	console.log(useAuth?.currentUser)
+	const navigate = useNavigate()
+
+	const onSuccess = () => {
+		navigate("/tasks")
+	}
 
 	const handleSignup = async (e: React.FormEvent) => {
 		e.preventDefault()
 		setPending(true)
 
 		createUserWithEmailAndPassword(auth, email, password)
-			.then(userCredential => {
-				const user = userCredential.user
-				console.log({ user })
+			.then(() => {
+				onSuccess()
 			})
 			.catch(error => {
 				toast.error(error.message)
@@ -40,9 +42,8 @@ export const AuthForm = () => {
 		e.preventDefault()
 		setPending(true)
 		signInWithEmailAndPassword(auth, email, password)
-			.then(userCredential => {
-				const user = userCredential.user
-				console.log({ user })
+			.then(() => {
+				onSuccess()
 			})
 			.catch(error => {
 				toast.error(error.message)
@@ -53,31 +54,29 @@ export const AuthForm = () => {
 	}
 
 	return (
-		<form
-			className={styles["auth-form"]}
-			onSubmit={showLogin ? handleLogin : handleSignup}
-		>
-			<h4>Take Control of Your Day - Start Your ToDo List Here!</h4>
-			<input
-				type='email'
-				value={email}
-				onChange={e => setEmail(e.target.value)}
-				placeholder='Email'
-				aria-label='email'
-				required
-			/>
-			<input
-				type='password'
-				value={password}
-				onChange={e => setPassword(e.target.value)}
-				placeholder='Password'
-				aria-label='password'
-				required
-			/>
-			<Button disabled={pending}>
-				{pending ? "Submitting..." : showLogin ? "Log In" : "Sign Up"}
-			</Button>
-
+		<div className={styles["auth-div"]}>
+			<form onSubmit={showLogin ? handleLogin : handleSignup}>
+				<h4>Take Control of Your Day - Start Your ToDo List Here!</h4>
+				<input
+					type='email'
+					value={email}
+					onChange={e => setEmail(e.target.value)}
+					placeholder='Email'
+					aria-label='email'
+					required
+				/>
+				<input
+					type='password'
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+					placeholder='Password'
+					aria-label='password'
+					required
+				/>
+				<Button disabled={pending}>
+					{pending ? "Submitting..." : showLogin ? "Log In" : "Sign Up"}
+				</Button>
+			</form>
 			<p className={styles["switch-method"]}>
 				{showLogin ? (
 					<>
@@ -88,13 +87,13 @@ export const AuthForm = () => {
 					</>
 				) : (
 					<>
-						Already an user?
+						Already an user?{" "}
 						<Button variant='secondary' onClick={() => setShowLogin(true)}>
 							Login here
 						</Button>
 					</>
 				)}
 			</p>
-		</form>
+		</div>
 	)
 }
