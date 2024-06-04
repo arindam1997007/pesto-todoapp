@@ -1,0 +1,12 @@
+.task-section {
+	padding: 2rem;
+
+	& .create-task {
+		margin-left: auto;
+	}
+
+	& > p {
+		text-align: center;
+		margin-top: 2rem;
+	}
+}

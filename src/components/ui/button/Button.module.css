@@ -3,6 +3,7 @@
 	font-weight: 500;
 	font-family: inherit;
 	cursor: pointer;
+	display: block;
 
 	&.primary {
 		border: 1px solid transparent;

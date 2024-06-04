@@ -7,6 +7,7 @@ import { HomePage } from "./routes/homePage/HomePage"
 import { ErrorPage } from "./routes/homePage/errorPage/ErrorPage"
 import { loginPageLoader } from "./routes/login/loginPageLoader"
 import { Loader } from "./components/ui/loader/Loader"
+import { CreateTaskPage } from "./routes/createTask/CreateTaskPage"
 
 const router = createBrowserRouter([
 	{
@@ -15,11 +16,11 @@ const router = createBrowserRouter([
 				<Outlet />
 			</AuthContextProvider>
 		),
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",
 				element: <HomePage />,
-				errorElement: <ErrorPage />,
 				children: [
 					{
 						index: true,
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
 						path: "tasks",
 						loader: taskPageLoader,
 						Component: TaskPage,
+					},
+					{
+						path: "create-task",
+						Component: CreateTaskPage,
 					},
 				],
 			},

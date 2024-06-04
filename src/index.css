@@ -30,8 +30,8 @@
 
 a {
 	font-weight: 500;
-	color: var(--primary);
-	text-decoration: inherit;
+	color: var(--text-color);
+	text-decoration: underline;
 }
 
 body {

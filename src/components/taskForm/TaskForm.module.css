@@ -1,0 +1,67 @@
+.new-task-div {
+	max-width: 500px;
+	margin-inline: auto;
+
+	border: 1px solid var(--text-color);
+
+	& h3 {
+		margin-top: 1rem;
+		text-align: center;
+	}
+}
+
+.new-task-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 2.5rem 1.25rem;
+
+	& textarea {
+		resize: vertical;
+	}
+
+	& input,
+	textarea,
+	select {
+		padding: 0.25em;
+	}
+
+	& .task-row {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+
+		& .task-label {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25rem;
+
+			& input[type="date"],
+			select {
+				border: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent);
+				background-color: transparent;
+			}
+
+			& option {
+				background-color: var(--background-color);
+				color: var(--text-color);
+				&:hover {
+					background-color: var(--secondary);
+				}
+			}
+
+			& .circle {
+				width: 0.5em;
+				height: 0.5em;
+				background-color: red;
+				display: inline-block;
+			}
+		}
+	}
+
+	& .task-footer {
+		display: flex;
+		justify-content: flex-end;
+		gap: 1rem;
+	}
+}
