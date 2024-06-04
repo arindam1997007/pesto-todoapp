@@ -21,6 +21,8 @@
 	}
 
 	& .switch-method {
+		display: flex;
+		justify-content: center;
 		margin-top: 1rem;
 		font-size: 0.825rem;
 	}
