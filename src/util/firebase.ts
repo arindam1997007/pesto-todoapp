@@ -1,9 +1,10 @@
 import { User, onAuthStateChanged } from "firebase/auth"
 import { auth, firestoreDb } from "../firebaseConfig"
-import { addDoc, collection, getDocs } from "firebase/firestore"
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { OnSubmitProps } from "../components/taskForm/PropTypes"
 import { SingleTaskType } from "../components/taskEntity/TaskEntityProps"
 import { capitalizeFirstLetter } from "./string"
+import { TASK_STATUS_TYPE } from "../const/taskConst"
 
 export const getCurrentUser = async (): Promise<User | null> => {
 	return new Promise(res => {
@@ -30,12 +31,19 @@ export const createTask = async ({
 	})
 }
 
-export const getAllTasks = async () => {
+export const getFilteredTasks = async (statusId: TASK_STATUS_TYPE) => {
 	const user = await getCurrentUser()
 	if (!user) throw new Error("User is not logged in!")
-	const querySnapshot = await getDocs(
-		collection(firestoreDb, "users", user.uid, "tasks")
-	)
+
+	let querySnapshot
+	const collectionRef = collection(firestoreDb, "users", user.uid, "tasks")
+
+	if (statusId === "all") {
+		querySnapshot = await getDocs(collectionRef)
+	} else {
+		const q = query(collectionRef, where("statusId", "==", statusId))
+		querySnapshot = await getDocs(q)
+	}
 
 	const tasks: SingleTaskType[] = []
 

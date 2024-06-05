@@ -1,8 +1,18 @@
 .task-section {
 	padding: 2rem 1rem;
+	width: 100%;
 
-	& .create-task {
+	& .button-div {
 		margin-left: auto;
+		display: flex;
+		justify-content: flex-end;
+		gap: 1rem;
+	}
+
+	& .filter-button {
+		& > svg {
+			stroke-width: 1.2px;
+		}
 	}
 
 	& > p {
@@ -14,7 +24,12 @@
 @media (min-width: 768px) {
 	.task-section {
 		padding: 2rem 2rem;
-		max-width: 75rem;
 		margin-inline: auto;
+	}
+}
+
+@media (min-width: 1280px) {
+	.task-section {
+		width: 75rem;
 	}
 }

@@ -1,0 +1,9 @@
+.filter-tasks {
+	display: flex;
+	flex-direction: column;
+
+	& input[type="radio"] {
+		accent-color: var(--accent);
+		margin-right: 0.5em;
+	}
+}
