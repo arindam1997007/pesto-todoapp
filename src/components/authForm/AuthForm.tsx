@@ -3,7 +3,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 } from "firebase/auth"
-import { auth } from "../../firebase"
+import { auth } from "../../firebaseConfig"
 import { toast } from "react-toastify"
 import { Button } from "../ui/button/Button"
 import { useNavigate } from "react-router-dom"
