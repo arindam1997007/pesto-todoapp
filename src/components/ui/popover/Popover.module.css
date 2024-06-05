@@ -1,0 +1,75 @@
+.popover-trigger {
+	cursor: pointer;
+	font-size: 1em;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	background-color: var(--primary);
+	transition: border-color 0.25s;
+
+	&:hover {
+		border-color: var(--text-color);
+	}
+
+	&:focus-visible {
+		outline: 2px auto -webkit-focus-ring-color;
+	}
+}
+
+.popover {
+	z-index: 50;
+	max-width: 18rem;
+	border: 1px solid var(--text-color);
+	background-color: var(--background-color);
+	padding: 1rem;
+	color: var(--text-color);
+	box-shadow: 0 4px 6px -1px color-mix(in srgb, var(--text-color) 8%, transparent),
+		0 2px 4px -1px color-mix(in srgb, var(--text-color) 8%, transparent);
+}
+
+.popover[data-state="open"] {
+	animation: animateIn 0.3s ease;
+}
+
+.popover[data-state="closed"] {
+	animation: animateOut 0.3s ease;
+	opacity: 0;
+	transform: scale(0.95);
+}
+
+.popover[data-side="bottom"] {
+	transform: translateY(0);
+}
+
+.popover[data-side="left"] {
+	transform: translateX(0);
+}
+
+.popover[data-side="right"] {
+	transform: translateX(0);
+}
+
+.popover[data-side="top"] {
+	transform: translateY(0);
+}
+
+@keyframes animateIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes animateOut {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+}
