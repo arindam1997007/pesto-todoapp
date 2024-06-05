@@ -2,10 +2,9 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom"
 import { AuthContextProvider } from "./context/AuthContext"
 import { LoginPage } from "./routes/login/LoginPage"
 import { TaskPage } from "./routes/tasks/TaskPage"
-import { taskPageLoader } from "./routes/tasks/taskPageLoader"
+import { protectedPageLoader } from "./routes/tasks/protectedPageLoader"
 import { HomePage } from "./routes/homePage/HomePage"
 import { ErrorPage } from "./routes/homePage/errorPage/ErrorPage"
-import { loginPageLoader } from "./routes/login/loginPageLoader"
 import { Loader } from "./components/ui/loader/Loader"
 import { CreateTaskPage } from "./routes/createTask/CreateTaskPage"
 
@@ -21,15 +20,14 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <HomePage />,
+				loader: protectedPageLoader,
 				children: [
 					{
 						index: true,
-						loader: loginPageLoader,
 						Component: LoginPage,
 					},
 					{
 						path: "tasks",
-						loader: taskPageLoader,
 						Component: TaskPage,
 					},
 					{
