@@ -1,5 +1,5 @@
 .task-section {
-	padding: 2rem;
+	padding: 2rem 1rem;
 
 	& .create-task {
 		margin-left: auto;
@@ -8,5 +8,13 @@
 	& > p {
 		text-align: center;
 		margin-top: 2rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.task-section {
+		padding: 2rem 2rem;
+		max-width: 75rem;
+		margin-inline: auto;
 	}
 }

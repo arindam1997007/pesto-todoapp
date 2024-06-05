@@ -5,6 +5,9 @@
 	--secondary: #2c2c2b;
 	--accent: #7886a9;
 
+	--success: #2acc3f;
+	--error: #ce4f31;
+
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	font-weight: 400;
 

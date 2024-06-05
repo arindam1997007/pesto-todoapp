@@ -1,0 +1,12 @@
+.daily-tasks {
+	& .due-date {
+		font-weight: 600;
+		&.upcoming {
+			color: var(--success);
+		}
+
+		&.late {
+			color: var(--error);
+		}
+	}
+}

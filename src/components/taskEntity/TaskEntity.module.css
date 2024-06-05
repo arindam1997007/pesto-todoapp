@@ -1,0 +1,32 @@
+.task-entity {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	padding: 1rem;
+	margin-block: 1rem;
+
+	border: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent);
+
+	row-gap: 0.25em;
+	column-gap: 1em;
+
+	grid-template-areas:
+		"check task-name edit"
+		"check description description";
+
+	& .check-button {
+		grid-area: check;
+	}
+
+	& .task-name {
+		grid-area: task-name;
+	}
+
+	& .description {
+		opacity: 0.7;
+		grid-area: description;
+	}
+
+	& .edit-button {
+		grid-area: edit;
+	}
+}
