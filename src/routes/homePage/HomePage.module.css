@@ -15,4 +15,8 @@
 		gap: 0.4rem;
 		align-items: center;
 	}
+
+	& h3 {
+		cursor: pointer;
+	}
 }

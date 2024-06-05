@@ -11,15 +11,25 @@ export const TaskForm = ({ onCancel, onSubmit, showStatus }: TaskFormProps) => {
 	const [taskName, setTaskName] = useState("")
 	const [description, setDescription] = useState("")
 	const [dueDate, setDueDate] = useState<string>(getTodayDate())
+	const [pending, setPending] = useState(false)
 
 	const onStatusChange = (e: React.FormEvent<HTMLSelectElement>) => {
 		const { value } = e.currentTarget
 		setStatus(TASK_STATUS.find(task => task.value === value) || TASK_STATUS[0])
 	}
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const resetData = () => {
+		setTaskName("")
+		setDescription("")
+		setStatus(TASK_STATUS[0])
+	}
+
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
-		onSubmit({ status, taskName, description, dueDate })
+		setPending(true)
+		await onSubmit({ status, taskName, description, dueDate })
+		setPending(false)
+		resetData()
 	}
 
 	return (
@@ -79,10 +89,12 @@ export const TaskForm = ({ onCancel, onSubmit, showStatus }: TaskFormProps) => {
 					)}
 				</div>
 				<div className={styles["task-footer"]}>
-					<Button variant='secondary' onClick={onCancel}>
+					<Button variant='secondary' onClick={onCancel} disabled={pending}>
 						Cancel
 					</Button>
-					<Button>Submit</Button>
+					<Button disabled={pending}>
+						{pending ? "Submiting..." : "Submit"}
+					</Button>
 				</div>
 			</form>
 		</div>

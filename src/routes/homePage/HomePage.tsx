@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { IoPersonCircleOutline } from "react-icons/io5"
@@ -8,13 +8,20 @@ import styles from "./HomePage.module.css"
 
 export const HomePage = () => {
 	const useAuth = useContext(AuthContext)
+	const navigate = useNavigate()
 	const profileName =
 		useAuth?.currentUser?.displayName || useAuth?.currentUser?.email
 
 	return (
 		<main className={styles["homePage-main"]}>
 			<header className={styles.header}>
-				<h3>To-Do Application</h3>
+				<h3
+					onClick={() => {
+						navigate("/tasks")
+					}}
+				>
+					To-Do Application
+				</h3>
 				<nav className={styles.navbar}>
 					{profileName && (
 						<>

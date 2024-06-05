@@ -8,11 +8,11 @@
 	backdrop-filter: blur(2px);
 	text-align: center;
 	padding: 2.5rem 1.25rem;
+	margin-inline: 1rem;
 
 	& form {
 		display: flex;
 		flex-direction: column;
-		margin-inline: 1rem;
 		gap: 1rem;
 
 		& input {
