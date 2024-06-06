@@ -3,6 +3,11 @@ import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { IoPersonCircleOutline } from "react-icons/io5"
 import { Button } from "../../components/ui/button/Button"
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "../../components/ui/popover/Popover"
 
 import styles from "./HomePage.module.css"
 
@@ -26,9 +31,16 @@ export const HomePage = () => {
 					{profileName && (
 						<>
 							<p>Hi! {profileName}</p>
-							<Button variant='secondary' onClick={useAuth.logout}>
-								<IoPersonCircleOutline />
-							</Button>
+							<Popover>
+								<PopoverTrigger className={styles["popover--trigger"]}>
+									<IoPersonCircleOutline />
+								</PopoverTrigger>
+								<PopoverContent>
+									<Button variant='secondary' onClick={useAuth.logout}>
+										Logout
+									</Button>
+								</PopoverContent>
+							</Popover>
 						</>
 					)}
 				</nav>
