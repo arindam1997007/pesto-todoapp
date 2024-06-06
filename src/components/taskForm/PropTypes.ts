@@ -1,4 +1,4 @@
-import { TASK_STATUS } from "../../const/taskConst"
+import { TASK_STATUS, TASK_STATUS_TYPE } from "../../const/taskConst"
 
 export interface TaskFormProps {
 	onCancel: () => void
@@ -11,4 +11,12 @@ export interface OnSubmitProps {
 	taskName: string
 	description: string
 	dueDate: string
+}
+
+export interface OnUpdateProps {
+	statusId: TASK_STATUS_TYPE
+	taskName: string
+	description: string
+	dueDate: string
+	taskId: string
 }

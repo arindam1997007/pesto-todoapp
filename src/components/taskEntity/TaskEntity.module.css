@@ -13,6 +13,15 @@
 		"check task-name edit"
 		"check description description";
 
+	&.task-completed {
+		transition: border 0.52s;
+		border: 1px solid var(--success);
+
+		& .check-button {
+			color: var(--success);
+		}
+	}
+
 	& .check-button {
 		grid-area: check;
 	}
