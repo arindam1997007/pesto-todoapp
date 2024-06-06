@@ -1,6 +1,6 @@
 .login-section {
 	--background-url: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-		url("../../../public/assets/dark-background.jpg");
+		url("/assets/dark-background.jpg");
 
 	background: var(--background-url);
 	height: 100%;
@@ -14,6 +14,6 @@
 @media (prefers-color-scheme: light) {
 	.login-section {
 		--background-url: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-			url("../../../public/assets/light-background.jpg");
+			url("/assets/light-background.jpg");
 	}
 }

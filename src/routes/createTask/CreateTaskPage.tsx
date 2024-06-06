@@ -4,24 +4,25 @@ import { TaskForm } from "../../components/taskForm/TaskForm"
 import { createTask } from "../../util/firebase"
 import { useNavigate } from "react-router-dom"
 import { returnToastError } from "../../util/error"
+import { Button } from "../../components/ui/button/Button"
 
 import styles from "./CreateTaskPage.module.css"
 
 export const CreateTaskPage = () => {
 	const navigate = useNavigate()
 
-	const onCancel = () => {
+	const navigateToTasks = () => {
 		navigate("/tasks")
 	}
 
 	const onSubmit = async ({
-		status,
+		statusId,
 		taskName,
 		description,
 		dueDate,
 	}: OnSubmitProps): Promise<void> => {
 		return createTask({
-			status,
+			statusId,
 			taskName,
 			description,
 			dueDate,
@@ -37,7 +38,14 @@ export const CreateTaskPage = () => {
 
 	return (
 		<section className={styles["create-task--section"]}>
-			<TaskForm onCancel={onCancel} onSubmit={onSubmit} />
+			<Button className={styles["view-button"]} onClick={navigateToTasks}>
+				View Tasks
+			</Button>
+			<TaskForm
+				title='Create a New Task'
+				onCancel={navigateToTasks}
+				onSubmit={onSubmit}
+			/>
 		</section>
 	)
 }

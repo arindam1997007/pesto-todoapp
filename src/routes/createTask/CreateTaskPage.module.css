@@ -1,3 +1,8 @@
 .create-task--section {
-	margin: 2rem 1rem;
+	padding: 2rem 2rem;
+	width: 100%;
+
+	& .view-button {
+		margin: 0 0 1rem auto;
+	}
 }

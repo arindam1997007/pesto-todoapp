@@ -4,6 +4,7 @@ import {
 	addDoc,
 	collection,
 	doc,
+	getDoc,
 	getDocs,
 	query,
 	updateDoc,
@@ -31,7 +32,7 @@ export const getCurrentUser = async (): Promise<User | null> => {
  * If userId is not there in the users collection, it would automatically be created by Firebase
  */
 export const createTask = async ({
-	status,
+	statusId,
 	taskName,
 	description,
 	dueDate,
@@ -40,7 +41,7 @@ export const createTask = async ({
 	if (!user) throw new Error("User is not logged in!")
 
 	return await addDoc(collection(firestoreDb, "users", user.uid, "tasks"), {
-		statusId: status.value,
+		statusId,
 		taskName: capitalizeFirstLetter(taskName),
 		description: capitalizeFirstLetter(description),
 		dueDate,
@@ -96,4 +97,21 @@ export const updateTask = async ({
 		description: capitalizeFirstLetter(description),
 		dueDate,
 	})
+}
+
+export const getSingleTaskDetails = async (
+	taskId: string
+): Promise<SingleTaskType | null> => {
+	const user = await getCurrentUser()
+	if (!user) throw new Error("User is not logged in!")
+
+	const docRef = doc(firestoreDb, "users", user.uid, "tasks", taskId)
+	const docSnap = await getDoc(docRef)
+
+	if (docSnap.exists()) {
+		const task = { ...docSnap.data(), id: taskId } as SingleTaskType
+		return task
+	} else {
+		return null
+	}
 }
