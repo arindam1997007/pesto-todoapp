@@ -5,7 +5,7 @@ import { formatDateForTaskList, hasDueDatePassed } from "../../util/date"
 
 import styles from "./DailyTasks.module.css"
 
-export const DailyTasks = ({ dailyTasks }: DailyTasksProps) => {
+export const DailyTasks = ({ dailyTasks, refetchTasks }: DailyTasksProps) => {
 	const isDue = hasDueDatePassed(dailyTasks.date)
 
 	return (
@@ -19,7 +19,9 @@ export const DailyTasks = ({ dailyTasks }: DailyTasksProps) => {
 				{formatDateForTaskList(dailyTasks.date)}
 			</span>
 			{dailyTasks.items.map(task => {
-				return <TaskEntity task={task} key={task.id} />
+				return (
+					<TaskEntity task={task} key={task.id} refetchTasks={refetchTasks} />
+				)
 			})}
 		</div>
 	)

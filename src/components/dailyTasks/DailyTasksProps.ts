@@ -7,4 +7,5 @@ export interface DailyTaskInterface {
 
 export interface DailyTasksProps {
 	dailyTasks: DailyTaskInterface
+	refetchTasks: () => void
 }

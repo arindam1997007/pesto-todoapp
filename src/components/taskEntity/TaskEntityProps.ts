@@ -2,6 +2,7 @@ import { TASK_STATUS_TYPE } from "../../const/taskConst"
 
 export interface TaskEntityProps {
 	task: SingleTaskType
+	refetchTasks: () => void
 }
 
 export interface SingleTaskType {

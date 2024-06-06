@@ -3,6 +3,7 @@ import { auth, firestoreDb } from "../firebaseConfig"
 import {
 	addDoc,
 	collection,
+	deleteDoc,
 	doc,
 	getDoc,
 	getDocs,
@@ -99,6 +100,10 @@ export const updateTask = async ({
 	})
 }
 
+/**
+ * Retrieves details of a single task based on the task ID after ensuring the
+ * user is logged in.
+ */
 export const getSingleTaskDetails = async (
 	taskId: string
 ): Promise<SingleTaskType | null> => {
@@ -114,4 +119,15 @@ export const getSingleTaskDetails = async (
 	} else {
 		return null
 	}
+}
+
+/**
+ * Deletes a task associated with a specific taskId after checking if the
+ * user is logged in.
+ */
+export const deleteTask = async (taskId: string) => {
+	const user = await getCurrentUser()
+	if (!user) throw new Error("User is not logged in!")
+
+	return await deleteDoc(doc(firestoreDb, "users", user.uid, "tasks", taskId))
 }

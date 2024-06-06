@@ -96,7 +96,13 @@ export const TaskPage = () => {
 				renderEmptyTaskPara()
 			) : (
 				tasks.map(dailyTasks => {
-					return <DailyTasks dailyTasks={dailyTasks} key={dailyTasks.date} />
+					return (
+						<DailyTasks
+							dailyTasks={dailyTasks}
+							key={dailyTasks.date}
+							refetchTasks={retrieveTasks}
+						/>
+					)
 				})
 			)}
 		</section>
