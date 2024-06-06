@@ -5,19 +5,36 @@
 }
 
 .header {
+	--_child-margin-inline: auto;
 	display: flex;
-	justify-content: space-between;
-	padding: 20px 40px;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	padding: 0.825rem 1.25rem;
 	background-color: var(--secondary);
+	align-items: baseline;
+	gap: 0.5rem;
 
 	& .navbar {
 		display: flex;
 		gap: 0.4rem;
 		align-items: center;
+		margin-inline: var(--_child-margin-inline);
 	}
 
 	& h3 {
 		cursor: pointer;
 		color: var(--accent);
+		margin-inline: var(--_child-margin-inline);
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+		--_child-margin-inline: unset;
+
+		padding: 1.25rem 2.5rem;
+		justify-content: space-between;
+		flex-wrap: nowrap;
 	}
 }

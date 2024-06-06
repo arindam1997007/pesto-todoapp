@@ -3,6 +3,7 @@ import { OnSubmitProps } from "../../components/taskForm/PropTypes"
 import { TaskForm } from "../../components/taskForm/TaskForm"
 import { createTask } from "../../util/firebase"
 import { useNavigate } from "react-router-dom"
+import { returnToastError } from "../../util/error"
 
 import styles from "./CreateTaskPage.module.css"
 
@@ -30,7 +31,7 @@ export const CreateTaskPage = () => {
 			})
 			.catch(error => {
 				console.error(error)
-				if (error instanceof Error) toast.error(error.message)
+				toast.error(returnToastError(error))
 			})
 	}
 

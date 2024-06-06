@@ -19,6 +19,13 @@ const firebaseConfig = {
 
 let auth: Auth, firestoreDb: Firestore
 
+/**
+ * If application is running in production mode `npm run dev:prod`, initialize firebase with the config.
+ * Otherwise, you need to go to ./firebase/functions, then run the emulators using `npm run serve`.
+ * Then, your local will point to the emulators and not the production, and any changes made here won't
+ * reflect in the production.
+ * You can also test firestore rules quite easily using the emulators.
+ **/
 if (import.meta.env.MODE === "PROD") {
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig)

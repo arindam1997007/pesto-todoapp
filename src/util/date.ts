@@ -29,6 +29,11 @@ export const formatDateForTaskList = (date: string) => {
 	}
 }
 
+/**
+ * Determines if a given date has passed based on the current date.
+ * @returns Returns the difference in calendar days between the input
+ * `date` and the current date.
+ */
 export const hasDueDatePassed = (date: string) => {
 	const convertDate = parse(date, DEFAULT_DATE_FORMAT, new Date())
 	return differenceInCalendarDays(convertDate, new Date())
