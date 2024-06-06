@@ -71,10 +71,11 @@ Live website is hosted at https://presto-tech-2cd37.web.app/
 2. **Authentication**
 
    - For authentication, emailId and password is used. Email verification is not handled.
+   - Didn't opt for Google or other providers, since most users (including me) don't like to use Google to signin to random websites.
 
 3. **Task Reminders**
 
-   - Task Reminders only run at 12AM IST once. It checks for tasks which are due the next day and not completed. Any task that falls under these conditions, the user shall receive a reminder mail.
+   - Task Reminders only run at 2PM IST once. It checks for reminder added tasks, which are due the next day and not completed. Any task that falls under these conditions, the user shall receive a reminder mail.
    - Email Verification should be done if an user wants to setup this service, otherwise unwanted people might get
      notified of this.
    - Unsubscribe to a task reminder should also be present.

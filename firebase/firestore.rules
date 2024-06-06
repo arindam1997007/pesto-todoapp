@@ -6,9 +6,15 @@ service cloud.firestore {
      allow create, read, update, delete: if 
         isCurrentUser(userId)        
      }
-  }
+     match /emails/{emailId} {      
+     allow create, read, update, delete: if 
+        request.auth != null && request.auth.uid == request.resource.data.uid;      
+   }     
+   }
+  
 }
 
 function isCurrentUser(userId){
    return request.auth != null && request.auth.uid == userId;
 }
+
