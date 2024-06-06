@@ -60,6 +60,7 @@ Live website is hosted at https://presto-tech-2cd37.web.app/
 
    - First, deploy all your functions, firestore rules and firestore indexes using `firebase deploy --only functions` etc.
    - In root directory, run `npm run firebase:deploy-hosting`, and it will host the application.
+   - Scheduled function is setup for reminder mails. It can be checked out at https://console.cloud.google.com/cloudscheduler?project=presto-tech-2cd37
 
 ### Assumptions and Improvement Scope
 
