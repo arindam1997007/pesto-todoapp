@@ -8,7 +8,8 @@
 		"dev:prod": "vite --mode=PROD",
 		"build": "tsc && vite build --mode=PROD",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"firebase:deploy-hosting": "npm run build && firebase deploy --only hosting"
 	},
 	"dependencies": {
 		"@radix-ui/react-alert-dialog": "^1.0.5",
