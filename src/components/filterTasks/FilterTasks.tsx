@@ -3,7 +3,7 @@ import { TASK_STATUS } from "../../const/taskConst"
 import styles from "./FilterTasks.module.css"
 
 interface FilterTasksProp {
-	selectedFilter: (typeof TASK_STATUS)[0]
+	selectedFilter: (typeof TASK_STATUS)[number]
 	onChangeFilter: (arg: string) => void
 }
 

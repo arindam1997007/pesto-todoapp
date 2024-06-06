@@ -11,8 +11,6 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "../../components/ui/popover/Popover"
-
-import styles from "./TaskPage.module.css"
 import { Loader } from "../../components/ui/loader/Loader"
 import {
 	TASK_ALL_STATUS,
@@ -22,12 +20,16 @@ import {
 } from "../../const/taskConst"
 import { FilterTasks } from "../../components/filterTasks/FilterTasks"
 
+import styles from "./TaskPage.module.css"
+
 export const TaskPage = () => {
 	const navigate = useNavigate()
 
 	const [tasks, setTasks] = useState<DailyTaskInterface[]>([])
 	const [loading, setLoading] = useState(true)
-	const [filterTask, setFilterTask] = useState(TASK_STATUS[0])
+	const [filterTask, setFilterTask] = useState<(typeof TASK_STATUS)[number]>(
+		TASK_STATUS[0]
+	)
 
 	const retrieveTasks = useCallback(async () => {
 		setLoading(true)

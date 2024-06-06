@@ -1,0 +1,8 @@
+.edit-task--section {
+	padding: 2rem 2rem;
+	width: 100%;
+
+	& .view-button {
+		margin: 0 0 1rem auto;
+	}
+}

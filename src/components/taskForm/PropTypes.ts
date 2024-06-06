@@ -1,13 +1,15 @@
-import { TASK_STATUS, TASK_STATUS_TYPE } from "../../const/taskConst"
+import { TASK_STATUS_TYPE } from "../../const/taskConst"
+import { SingleTaskType } from "../taskEntity/TaskEntityProps"
 
 export interface TaskFormProps {
+	title: string
 	onCancel: () => void
-	showStatus?: boolean
 	onSubmit: (args: OnSubmitProps) => void
+	task?: SingleTaskType
 }
 
 export interface OnSubmitProps {
-	status: (typeof TASK_STATUS)[0]
+	statusId: TASK_STATUS_TYPE
 	taskName: string
 	description: string
 	dueDate: string

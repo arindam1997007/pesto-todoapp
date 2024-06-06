@@ -11,7 +11,7 @@ export const ErrorPage = () => {
 		errorMessage = error.statusText
 		errorStatus = error.status
 	} else if (error instanceof Error) {
-		errorMessage = error.name
+		errorMessage = error.message
 	} else if (typeof error === "string") {
 		errorMessage = error
 	} else {

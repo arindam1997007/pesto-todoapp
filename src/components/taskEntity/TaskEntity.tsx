@@ -12,10 +12,12 @@ import { useState } from "react"
 import { toast } from "react-toastify"
 import classNames from "classnames"
 import { returnToastError } from "../../util/error"
+import { useNavigate } from "react-router-dom"
 
 import styles from "./TaskEntity.module.css"
 
 export const TaskEntity = ({ task }: TaskEntityProps) => {
+	const navigate = useNavigate()
 	const { taskName, description } = task
 
 	const [status, setStatus] = useState(task.statusId)
@@ -35,6 +37,10 @@ export const TaskEntity = ({ task }: TaskEntityProps) => {
 			console.error(err)
 			toast.error(returnToastError(err))
 		})
+	}
+
+	const onEdit = () => {
+		navigate(`/task/${task.id}`)
 	}
 
 	return (
@@ -59,7 +65,7 @@ export const TaskEntity = ({ task }: TaskEntityProps) => {
 			</Button>
 			<span className={styles["task-name"]}>{taskName}</span>
 			<Button variant='secondary' className={styles["edit-button"]}>
-				<FiEdit />
+				<FiEdit onClick={onEdit} />
 			</Button>
 			<span className={styles.description}>{description}</span>
 		</article>

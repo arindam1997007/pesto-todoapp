@@ -7,6 +7,8 @@ import { HomePage } from "./routes/homePage/HomePage"
 import { ErrorPage } from "./routes/homePage/errorPage/ErrorPage"
 import { Loader } from "./components/ui/loader/Loader"
 import { CreateTaskPage } from "./routes/createTask/CreateTaskPage"
+import { EditTaskPage } from "./routes/editTask/EditTaskPage"
+import { editTaskPageLoader } from "./routes/editTask/editTaskLoader"
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +35,11 @@ const router = createBrowserRouter([
 					{
 						path: "create-task",
 						Component: CreateTaskPage,
+					},
+					{
+						path: "task/:taskId",
+						loader: editTaskPageLoader,
+						Component: EditTaskPage,
 					},
 				],
 			},
