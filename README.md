@@ -11,9 +11,11 @@ Live website is hosted at https://presto-tech-2cd37.web.app/
 1. **Create a Firebase Project:**
 
    - Go to [Firebase Console](https://console.firebase.google.com/u/0/) and create a new project.
+   - Install firebase cli using `npm install -g firebase-tools`
 
 2. **Deploy Functions and Firestore**
 
+   - Login via firebase cli using `firebase login`
    - Go to ./firebase/functions using `cd firebase/functions`
    - Execute `npm run deploy:functions` and `npm run deploy:firestore-rules`. You might need to set them up first
      from Firebase console.
@@ -64,18 +66,18 @@ Live website is hosted at https://presto-tech-2cd37.web.app/
 1. **Color Scheme Preferences**
 
    - The application respects the user's device color scheme settings (light or dark mode).
-   - Implement a color mode switch option to improve user experience. This allows users to toggle between light  
-     and dark modes.
+   - Implement a color mode switch option to improve user experience. This allows users to toggle between light and dark modes.
 
 2. **Authentication**
 
    - For authentication, emailId and password is used. Email verification is not handled.
-   - Email Verification needs to be handled, if reminder mails need to be setup.
 
-3. **React-Router actions**
+3. **Task Reminders**
 
-   - Form submissions are managed using React states and onClick event handlers.
-   - React-Router's action functions can handle form submission and data loading which can increase UX.
+   - Task Reminders only run at 12AM IST once. It checks for tasks which are due the next day and not completed. Any task that falls under these conditions, the user shall receive a reminder mail.
+   - Email Verification should be done if an user wants to setup this service, otherwise unwanted people might get
+     notified of this.
+   - Unsubscribe to a task reminder should also be present.
 
 4. **Rate Limiter**
 
@@ -91,3 +93,8 @@ Live website is hosted at https://presto-tech-2cd37.web.app/
 
    - Data Fetching is done, using Firebase function calls. But, for a more complex application, tools like
      react-query can be very beneficial, since it helps with automatic caching and code management.
+
+7. **React-Router actions**
+
+   - Form submissions are managed using React states and onClick event handlers.
+   - React-Router's action functions can handle form submission and data loading which can increase UX.
