@@ -8,7 +8,7 @@ import {
 } from "date-fns"
 import { DEFAULT_DATE_FORMAT } from "../const/common"
 
-export const formatDateForInput = (date: Date) => {
+export const formatDateForInput = (date: Date | string) => {
 	return format(date, DEFAULT_DATE_FORMAT)
 }
 

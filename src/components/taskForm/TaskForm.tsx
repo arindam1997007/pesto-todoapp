@@ -65,7 +65,7 @@ export const TaskForm = ({
 							aria-label='Due Date'
 							type='date'
 							required
-							min={formatDateForInput(new Date())}
+							min={formatDateForInput(task?.dueDate || new Date())}
 							value={dueDate}
 							onChange={e => setDueDate(e.currentTarget.value)}
 						/>
