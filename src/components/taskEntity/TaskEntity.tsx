@@ -1,9 +1,10 @@
 import { FaRegCircle, FaRegCircleCheck } from "react-icons/fa6"
 import { RiDeleteBin4Fill } from "react-icons/ri"
+import { FaRegClock } from "react-icons/fa"
 import { FiEdit } from "react-icons/fi"
 import { TaskEntityProps } from "./TaskEntityProps"
 import { Button } from "../ui/button/Button"
-import { deleteTask, updateTask } from "../../util/firebase"
+import { addTaskForReminder, deleteTask, updateTask } from "../../util/firebase"
 import {
 	TASK_COMPLETED_STATUS,
 	TASK_PENDING_STATUS,
@@ -66,6 +67,25 @@ export const TaskEntity = ({ task, refetchTasks }: TaskEntityProps) => {
 			})
 	}
 
+	const remindTask = async () => {
+		let isComplete = false
+		if (task.statusId === TASK_COMPLETED_STATUS) isComplete = true
+
+		addTaskForReminder({
+			taskId: task.id,
+			dueDate: task.dueDate,
+			isComplete,
+			taskName: task.taskName,
+		})
+			.then(() => {
+				toast.success("Mail reminder added!")
+			})
+			.catch(err => {
+				console.error(err)
+				toast.error(returnToastError(err))
+			})
+	}
+
 	return (
 		<article
 			className={classNames([
@@ -108,6 +128,13 @@ export const TaskEntity = ({ task, refetchTasks }: TaskEntityProps) => {
 					</AlertDialogFooter>
 				</AlertDialogContent>
 			</AlertDialog>
+			<Button
+				variant='secondary'
+				className={styles["reminder-button"]}
+				onClick={remindTask}
+			>
+				<FaRegClock />
+			</Button>
 			<span className={styles.description}>{description}</span>
 		</article>
 	)

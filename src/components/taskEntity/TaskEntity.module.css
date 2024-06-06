@@ -1,6 +1,6 @@
 .task-entity {
 	display: grid;
-	grid-template-columns: auto 1fr auto auto;
+	grid-template-columns: auto 1fr auto auto auto;
 	padding: 1rem;
 	margin-block: 1rem;
 
@@ -10,8 +10,8 @@
 	column-gap: 1em;
 
 	grid-template-areas:
-		"check task-name edit delete"
-		"check description description description";
+		"check task-name edit delete reminder"
+		"check description description description description";
 
 	&.task-completed {
 		transition: border 0.52s;
@@ -32,6 +32,10 @@
 		background-color: transparent;
 		border: none;
 		padding: 0;
+	}
+
+	& .reminder-button {
+		grid-area: reminder;
 	}
 
 	& .task-name {

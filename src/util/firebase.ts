@@ -8,6 +8,7 @@ import {
 	getDoc,
 	getDocs,
 	query,
+	setDoc,
 	updateDoc,
 	where,
 } from "firebase/firestore"
@@ -130,4 +131,26 @@ export const deleteTask = async (taskId: string) => {
 	if (!user) throw new Error("User is not logged in!")
 
 	return await deleteDoc(doc(firestoreDb, "users", user.uid, "tasks", taskId))
+}
+
+export const addTaskForReminder = async ({
+	taskId,
+	dueDate,
+	isComplete,
+	taskName,
+}: {
+	taskId: string
+	dueDate: string
+	isComplete: boolean
+	taskName: string
+}) => {
+	const user = await getCurrentUser()
+	if (!user) throw new Error("User is not logged in!")
+
+	return await setDoc(doc(firestoreDb, "emails", taskId), {
+		isComplete,
+		uid: user.uid,
+		dueDate,
+		taskName,
+	})
 }
